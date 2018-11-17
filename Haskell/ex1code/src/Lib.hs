@@ -24,7 +24,7 @@ import Prelude hiding (take)
 -- finish the function "add" that takes two integers
 -- and returns the sum of them
 add :: Int -> Int -> Int
-add n m = undefined
+add n m = n + m 
 
 -- complete the function "isVowel" which
 -- takes a character and returns True
@@ -32,7 +32,8 @@ add n m = undefined
 -- hint: a string is a list
 -- hint2: use `elem` from Prelude
 isVowel :: Char -> Bool
-isVowel chr = undefined
+isVowel chr = chr `elem` "AEIOUaeiou"
+
 
 data Status = One | Two | Three | None deriving (Show, Eq)
 
@@ -42,7 +43,11 @@ data Status = One | Two | Three | None deriving (Show, Eq)
 -- and returns a tuple of a Status (look above, describes the amount of subjects in the list)
 -- and the name
 amountOf :: String -> [a] -> (Status, String)
-amountOf = undefined
+amountOf name [] = (None,name)
+amountOf name (x:[]) = (One, name)
+amountOf name (x:y:[]) = (Two, name)
+amountOf name (x:y:z:[]) = (Three, name)
+ 
 
 -- TASK 2
 -- Recursion
