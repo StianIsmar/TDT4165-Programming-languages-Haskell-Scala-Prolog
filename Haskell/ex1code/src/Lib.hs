@@ -69,15 +69,23 @@ fib x = fib (x-1) + fib (x-2)
 -- complete the function "ing" that takes a list of
 -- strings and returns them with the ending -ing
 -- if the string is empty, remove it from the list
+    -- ["running", "swimming"]
 ending :: [String] -> [String]
-ending = undefined
+ending xs = [x ++ "ing" | x <- xs, length x > 0]
 
 -- complete the function "takeInt" that
 -- an integer n and a list of integers and
 -- returns the first n elements of 
 -- the list
+-- [1,2,34,8,1,2]
 takeInt :: Int -> [Int] -> [Int]
-takeInt = undefined
+takeInt n (x:xs)
+    | n <= 0 = []
+    | n > length xs+1 = (x:xs)
+    | x == null = []
+    | otherwise = (x:takeInt (n-1) xs)
+    
+
 
 -- implement "fizzbuzz" as described in exercise 1
 fizzbuzz :: [String]

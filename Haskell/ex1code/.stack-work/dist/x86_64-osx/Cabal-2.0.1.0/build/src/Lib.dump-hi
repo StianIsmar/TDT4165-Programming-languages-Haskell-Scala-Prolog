@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-11-17 17:25:29.932955 UTC
+2018-11-17 17:48:37.582544 UTC
 
 interface ex1code-0.1.0.0-4lBiOZsKVJFKBzdrptlJML:Lib 8022
-  interface hash: dc48bf8d710e874caa570c9e631656c9
-  ABI hash: 02c75c95b765f09d649ac659226d0997
+  interface hash: a2456290cb832b9541d6addc4cd9c100
+  ABI hash: b2c11f48740d01102af364827919542d
   export-list hash: fd89f4da2b6f813e8681dc3b481a1546
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: b6713aa627699aecd74844ad934b01db
@@ -260,6 +260,9 @@ dd1593fbaaafcd1616bf305f00d90dc7
 c72d6dc9bb1f4a0df382df54820f9c5c
   $wfib :: GHC.Prim.Int# -> GHC.Prim.Int#
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0] -}
+71cae57ea4eba76461513da56cceb5b4
+  $wtakeInt :: GHC.Prim.Int# -> [GHC.Types.Int] -> [GHC.Types.Int]
+  {- Arity: 2, Strictness: <S,U><S,1*U>, Inline: [0] -}
 9ba44b686e6c8d135e998fa4376b9328
   data Status = One | Two | Three | None
 f199a4dd3350826991fce45974a31c31
@@ -288,9 +291,13 @@ c9fb9560693a699fec9e524a5a8fbc83
 67f868647ce54c965a74d25cf3f53b73
   cartesian :: [(GHC.Types.Int, GHC.Types.Int)]
   {- Strictness: x -}
-ea49dd6211abb66e5d7431bd04c75b97
+f6aa7c1777196e3c85f86168308e618a
   ending :: [GHC.Base.String] -> [GHC.Base.String]
-  {- Strictness: x -}
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ (xs :: [GHC.Base.String]) -> Lib.ending_go xs) -}
+9b8778eee2a263e5e1d52b4e30889f8c
+  ending_go :: [GHC.Base.String] -> [GHC.Base.String]
+  {- Arity: 1, Strictness: <S,1*U> -}
 bb6298188b6047a938267e81e2456901
   fib :: GHC.Types.Int -> GHC.Types.Int
   {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>m,
@@ -337,9 +344,12 @@ aa1db44943ce029c37941e9e6c7a3c4c
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 2, Strictness: <S,1*U><S,U> -}
-9099858527737842af87a9f782b0bd02
+1a0309ec54c3c056feb34de25ff18411
   takeInt :: GHC.Types.Int -> [GHC.Types.Int] -> [GHC.Types.Int]
-  {- Strictness: x -}
+  {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U>, Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Int) (w1 :: [GHC.Types.Int]) ->
+                 case w of ww { GHC.Types.I# ww1 -> Lib.$wtakeInt ww1 w1 }) -}
 fc3c381109f98e5d53827cfc17401fa9
   zipped :: [(GHC.Types.Int, GHC.Types.Char)]
   {- Strictness: x -}
