@@ -58,7 +58,10 @@ amountOf name (x:y:z:[]) = (Three, name)
 -- assuming that 0th = 0 and 1st = 1
 -- do not optimize it
 fib :: Int -> Int
-fib = undefined
+fib 0 = 0
+fib 1 = 1
+fib 2 = 1
+fib x = fib (x-1) + fib (x-2)
 
 -- TASK 3
 -- Working with lists

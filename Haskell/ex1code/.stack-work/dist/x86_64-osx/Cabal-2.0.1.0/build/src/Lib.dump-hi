@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-11-17 17:11:41.261334 UTC
+2018-11-17 17:25:29.932955 UTC
 
 interface ex1code-0.1.0.0-4lBiOZsKVJFKBzdrptlJML:Lib 8022
-  interface hash: 9dcb20f28e721115d125565ded8b425d
-  ABI hash: 09817621db3c02d090bb327ad08fe768
+  interface hash: dc48bf8d710e874caa570c9e631656c9
+  ABI hash: 02c75c95b765f09d649ac659226d0997
   export-list hash: fd89f4da2b6f813e8681dc3b481a1546
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: b6713aa627699aecd74844ad934b01db
@@ -257,6 +257,9 @@ dd1593fbaaafcd1616bf305f00d90dc7
                    Lib.Two -> GHC.Base.++ @ GHC.Types.Char Lib.$fShowStatus5 w1
                    Lib.Three -> GHC.Base.++ @ GHC.Types.Char Lib.$fShowStatus3 w1
                    Lib.None -> GHC.Base.++ @ GHC.Types.Char Lib.$fShowStatus1 w1 }) -}
+c72d6dc9bb1f4a0df382df54820f9c5c
+  $wfib :: GHC.Prim.Int# -> GHC.Prim.Int#
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0] -}
 9ba44b686e6c8d135e998fa4376b9328
   data Status = One | Two | Three | None
 f199a4dd3350826991fce45974a31c31
@@ -288,9 +291,14 @@ c9fb9560693a699fec9e524a5a8fbc83
 ea49dd6211abb66e5d7431bd04c75b97
   ending :: [GHC.Base.String] -> [GHC.Base.String]
   {- Strictness: x -}
-e9ced2a20bcb4bc5929a25f5377fe271
+bb6298188b6047a938267e81e2456901
   fib :: GHC.Types.Int -> GHC.Types.Int
-  {- Strictness: x -}
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>m,
+     Inline: [0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Types.Int) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case Lib.$wfib ww1 of ww2 { DEFAULT -> GHC.Types.I# ww2 } }) -}
 c1c7440026820c74aee5cffdb834c5c7
   fizzbuzz :: [GHC.Base.String]
   {- Strictness: x -}
