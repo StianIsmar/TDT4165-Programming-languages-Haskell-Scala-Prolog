@@ -18,6 +18,7 @@ module Lib
 import Control.Monad (mapM_)
 import Prelude hiding (take)
 
+
 -- TASK 1
 -- Simple functions
 
