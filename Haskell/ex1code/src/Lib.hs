@@ -98,6 +98,7 @@ checkElem x
     | x `mod` 5 == 0 = "Buzz"
     | otherwise = show x
 
+
 createList :: [Int]
 createList = [1..100]
 
@@ -111,18 +112,24 @@ printFizz = mapM_ putStrLn fizzbuzz
 -- even numbers that are equal or greater than 0
 -- use a list comprehension
 listOfEven :: [Integer]
-listOfEven = undefined
+listOfEven = [x | x <- myList, x `mod` 2 == 0]
+    where myList = [0..]
 
 -- create a list of tuples, "zipped"
 -- where each tuple contains the nth entry
 -- in the lists [1..26] and ['a'..'z']
 -- hint: parallel list comprehension
 zipped :: [(Int, Char)]
-zipped = undefined
+zipped = [(x,y) | x <- nums | y <- letters]
+    where nums = [1..26] 
+          letters = ['a'..'z']
 
 -- create a list that contains the cartesian
 -- product of the two vectors [4, 6, 8]
 -- and [3, 7, 9]
 -- use a list comprehension
 cartesian :: [(Int, Int)]
-cartesian = undefined
+cartesian = [(x,y) | x<- firstVec, y <- secondVec]
+    where firstVec = [4,6,8]
+          secondVec = [3,7,9]
+
