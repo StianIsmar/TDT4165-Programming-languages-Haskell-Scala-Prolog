@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2018-11-17 17:47:55.863401 UTC
+2018-11-18 10:34:55.311226 UTC
 
 interface main:Main 8022
-  interface hash: 3d859b3c38dc9e4bfb53685c8c9e7541
+  interface hash: 331131d258c221c0c1007d47408795cd
   ABI hash: 983398e65b59a9c4ce16e2230562034e
   export-list hash: 0bac4bebe665bfb29010fbed799c95a6
   orphan hash: 7730f458c7786706baa17d03c43f25c6
@@ -65,7 +65,7 @@ import  -/  base-4.10.1.0:GHC.List e3060fbeb44ce0038e6b4dedf2dd9cf1
 import  -/  base-4.10.1.0:GHC.Num 6e1dc5d36d99a802edb39b92bb1923b8
 import  -/  base-4.10.1.0:GHC.Real 3c62834bc25e762eabc44149c4cc142d
 import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
-import  -/  ex1code-0.1.0.0:Lib b2c11f48740d01102af364827919542d
+import  -/  ex1code-0.1.0.0:Lib d9e8c1027793aa137a87bd9a29ef2d80
 import  -/  ghc-prim-0.5.1.1:GHC.Classes 93e2660065dce9329577e83d76d8f0d4
 import  -/  ghc-prim-0.5.1.1:GHC.Types b1fd0716441595db508c1a74387bf394
 import  -/  hspec-2.5.4:Test.Hspec f48b6afb214a0109890cecfc03ce3670

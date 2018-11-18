@@ -79,17 +79,27 @@ ending xs = [x ++ "ing" | x <- xs, length x > 0]
 -- the list
 -- [1,2,34,8,1,2]
 takeInt :: Int -> [Int] -> [Int]
+takeInt _ [] = []
 takeInt n (x:xs)
     | n <= 0 = []
     | n > length xs+1 = (x:xs)
-    | x == null = []
     | otherwise = (x:takeInt (n-1) xs)
     
 
-
 -- implement "fizzbuzz" as described in exercise 1
 fizzbuzz :: [String]
-fizzbuzz = undefined
+fizzbuzz = [checkElem x | x <- myList, length myList > 0]
+    where myList = createList
+
+checkElem :: Int -> String
+checkElem x
+    | x `mod` 3 == 0 && x `mod` 5 == 0 = "FizzBuzz"
+    | x `mod` 3 == 0 = "Fizz"
+    | x `mod` 5 == 0 = "Buzz"
+    | otherwise = show x
+
+createList :: [Int]
+createList = [1..100]
 
 printFizz :: IO ()
 printFizz = mapM_ putStrLn fizzbuzz
