@@ -16,7 +16,6 @@ module Lib
     ) where
 
 import Control.Monad (mapM_)
-import Prelude hiding (take)
 
 
 -- TASK 1
@@ -57,7 +56,7 @@ amountOf name (x:y:z:[]) = (Three, name)
 -- nth fibonacci number 
 -- assuming that 0th = 0 and 1st = 1
 -- do not optimize it
-fib :: Int -> Int
+fib :: (Num a) =>Int -> a
 fib 0 = 0
 fib 1 = 1
 fib 2 = 1

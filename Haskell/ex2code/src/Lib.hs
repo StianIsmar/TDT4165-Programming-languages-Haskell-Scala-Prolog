@@ -13,7 +13,7 @@ module Lib
     , safeHead
     ) where
 
-import Prelude hiding (map, take, iterate, sqrt, Maybe)
+import Prelude hiding (map,iterate,take, sqrt, Maybe)
 
 -- TASK 1
 -- Parametric polymorphism
@@ -68,6 +68,12 @@ safeHead :: [a] -> Maybe a
 safeHead [] = None
 safeHead (x:xs) = Some x 
 
+--from T1:
+fib :: Int -> Int
+fib 0 = 0
+fib 1 = 1
+fib 2 = 1
+fib x = fib (x-1) + fib (x-2)
 -- TASK 2
 -- Higher order functions
 
@@ -143,12 +149,12 @@ approx threshold (y:x:xs)
 
 isPerfSq :: Double -> Bool
 -- Skal ta første elementet som er True med funksjonen isDoubleInt
-isPerfSq value = isDoubleInt $ approx 0.000001 $ infiniteApprox value $ value/2
+isPerfSq value = isDoubleInt . approx 0.00000001 $ infiniteApprox value $ value/2
 
 --uncomment when isPerfSqr is defined
---accuracy :: Int -> Bool
---accuracy x = take x generated == take x [x^2 | x <- [1..]]
---                where
---             zpd       = zip [1..] (map isPerfSq [1..])
---             f (x,y)   = y == True
---             generated = fst . unzip $ filter f zpd
+accuracy :: Int -> Bool
+accuracy x = take x generated == take x [x^2 | x <- [1..]]
+                where
+             zpd       = zip [1..] (map isPerfSq [1..])
+             f (x,y)   = y == True
+             generated = fst . unzip $ filter f zpd
