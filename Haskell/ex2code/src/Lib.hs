@@ -141,9 +141,9 @@ approx threshold (y:x:xs)
                 | otherwise = approx threshold (x:xs)
 
 
-isPerfSq :: Double -> Double
+isPerfSq :: Double -> Bool
 -- Skal ta første elementet som er True med funksjonen isDoubleInt
-isPerfSq = undefined--(takeInt 10 (infiniteApprox x (x/2))) !! 9
+isPerfSq value = isDoubleInt $ approx 0.000001 $ infiniteApprox value $ value/2
 
 --uncomment when isPerfSqr is defined
 --accuracy :: Int -> Bool
