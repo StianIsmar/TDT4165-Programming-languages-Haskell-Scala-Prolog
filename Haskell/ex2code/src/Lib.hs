@@ -133,10 +133,17 @@ isDoubleInt x
     | fromInteger (round x) == x = True
     | otherwise = False
 
+-- Iterates through the inf list!
+approx :: Double -> [Double] -> Double
+approx threshold [] = 0.0
+approx threshold (y:x:xs)
+                | abs (y-x) <= threshold = x
+                | otherwise = approx threshold (x:xs)
 
-isPerfSq :: Double -> [Double]
+
+isPerfSq :: Double -> Double
 -- Skal ta første elementet som er True med funksjonen isDoubleInt
-isPerfSq x = takeInt 1000 (infiniteApprox x (x/2))
+isPerfSq = undefined--(takeInt 10 (infiniteApprox x (x/2))) !! 9
 
 --uncomment when isPerfSqr is defined
 --accuracy :: Int -> Bool
