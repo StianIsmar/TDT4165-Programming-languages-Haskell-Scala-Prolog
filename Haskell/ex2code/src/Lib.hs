@@ -104,10 +104,11 @@ filterPos (x:xs)
 -- integers (including zero)
 -- hint: use filterPos and map
 filterPosMany :: [[Int]] -> [[Int]]
--- 1) With foldrfilterPosMany xss = foldr (\x acc-> filterPos x:acc) [[]] xss 
+--1) With foldr
+filterPosMany xss = foldr (\x acc-> filterPos x:acc) [] xss 
 -- 2) With list comprehension:  -- filterPosMany xss = [filterPos x | x<-xss]
 -- 3 ) With map:
-filterPosMany xss = map filterPos xss
+--filterPosMany xss = map filterPos xss
 
 -- flip3 (\x y z -> x : y : [z]) ’c’ ’b’ ’a’
 flip3 :: (a -> b -> c -> d) -> c -> b -> a -> d
@@ -116,21 +117,26 @@ flip3 f x y z = f z y x
 -- TASK 4
 -- Infinite lists
 
-approxSquare :: (Floating a ) => a -> a -> a
+approxSquare :: Double-> Double -> Double
 approxSquare x guess = guess - ((guess^2 - x)/(2 * guess))
-
-
+-- x er tallet vi vil regne ut
+-- Guess er tallet vil gjetter er approksimasjonen!
+    
 -- Own: Function that return an infinite list of approximations:
+infiniteApprox :: Double -> Double -> [Double]
+infiniteApprox x guess = iterate (approxSquare x) guess
+
+isDoubleInt :: Double -> Bool
+-- Round makes it an integer
+-- fromInteger converts the newly created integer to any Num type
+isDoubleInt x
+    | fromInteger (round x) == x = True
+    | otherwise = False
 
 
-
-
-
-
-
-
-isPerfSq :: Double -> Bool
-isPerfSq = undefined
+isPerfSq :: Double -> [Double]
+-- Skal ta første elementet som er True med funksjonen isDoubleInt
+isPerfSq x = takeInt 1000 (infiniteApprox x (x/2))
 
 --uncomment when isPerfSqr is defined
 --accuracy :: Int -> Bool
