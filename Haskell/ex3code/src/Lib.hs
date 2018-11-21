@@ -34,16 +34,31 @@ listSum (x:xs) = x + listSum xs
 
 listProduct :: (Num a) => [a] -> a
 listProduct [] = 1
-listProduct (x:xs) = (*) x listProduct xs
+listProduct (x:xs) = x * listProduct xs
 
 listConcat :: [[a]] -> [a]
-listConcat = undefined
+listConcat [] = []
+listConcat (xs:xss)= xs ++ listConcat xss
 
 listMaximum :: (Ord a) => [a] -> Maybe a
-listMaximum = undefined
+listMaximum [] = Nothing
+listMaximum (x:xs) 
+        | Just x > listMaximum xs = Just x
+        | otherwise = listMaximum xs 
+
+
 
 listMinimum :: (Ord a) => [a] -> Maybe a
-listMinimum = undefined
+listMinimum xs 
+    | minlist2 xs == null = Nothing
+    | otherwise = Just $ (minlist2 xs)
+               
+
+minlist2 :: (Ord a)=> [a]->a
+minlist2 [] = null
+minlist2 (x:xs)
+        | x < minlist2 xs = x
+        | otherwise = minlist2
 
 -- TASK 3 Folds
 
@@ -55,28 +70,45 @@ class Foldable t where
   foldr :: (a -> b -> b) -> b -> t a -> b
 
 instance Foldable [] where
-  foldr = undefined
+  foldr _ acc [] = acc
+  foldr f acc (x:xs) = x `f` foldr f acc xs   
 
 --
 -- USE FOLDR TO DEFINE THESE FUNCTIONS
 --
 sum :: (Num a, Foldable t) => t a -> a
-sum = undefined
+sum xs= foldr (+) 0 xs
 
 concat :: Foldable t => t [a] -> [a]
-concat = undefined
+concat xs= foldr (++) [] xs
 
 length :: Foldable t => t a -> Int
-length = undefined
+length xs = foldr (\_ acc -> acc + 1) 0 xs
+
 
 elem :: (Eq a, Foldable t) => a -> t a -> Bool
-elem = undefined
+elem e xs = foldr (\x acc -> if checkIfContains e x then True else acc) False xs
+    where checkIfContains check elem
+            | check == elem = True
+            | otherwise = False
 
+--Når det er sammenligning av to blir det andre boller
 safeMaximum :: (Foldable t, Ord a) => t a -> Maybe a
-safeMaximum = undefined
+safeMaximum xs = foldr (\x acc -> checkElem x acc) Nothing xs
+    where
+        checkElem x Nothing = Just x
+        checkElem x (Just y)
+            | x > y = Just x
+            | otherwise = Just y
+   
 
 safeMinimum :: (Foldable t, Ord a) => t a -> Maybe a
-safeMinimum = undefined
+safeMinimum xs = foldr (\x acc -> min' x acc) Nothing xs
+        where 
+            min' x Nothing = Just x
+            min' x (Just y)
+                | x < y = Just x
+                | otherwise = Just y
 
 -- The functions "any" and "all" check if any or all elements of a
 -- Foldable satisfy the given predicate.
@@ -84,10 +116,13 @@ safeMinimum = undefined
 -- USE FOLDR
 --
 any :: Foldable t => (a -> Bool) -> t a -> Bool
-any p = undefined
+any p xs = foldr (\x acc -> if p x then True else acc ) False xs
 
 all :: Foldable t => (a -> Bool) -> t a -> Bool
-all p = undefined
+all p xs = foldr (\x acc -> ifOneFalse x) True xs
+            where
+                ifOneFalse x
+                    | p x == False = False
 
 -- TASK 4
 -- Num Complex
