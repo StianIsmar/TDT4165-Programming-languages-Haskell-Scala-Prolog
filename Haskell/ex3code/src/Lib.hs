@@ -40,21 +40,27 @@ listConcat :: [[a]] -> [a]
 listConcat [] = []
 listConcat (xs:xss)= xs ++ listConcat xss
 
+         -- If the current one is smaller (or ==) than the
+            -- next one in the list-> set the next one as
+            -- current and call it recursively! easy
 listMaximum :: (Ord a) => [a] -> Maybe a
 listMaximum [] = Nothing
 listMaximum (x:xs) = Just $ listMaximum' x xs
-        where listMaximum' current (x:xs)
-            -- If the current one is smaller (or ==) than the
-            -- next one in the list-> set the next one as
-            -- current and call it recursively! easy
-            | current <= x = listMaximum' x xs
-            | otherwise = listMaximum' current xs
+        where 
+            listMaximum' current [] = current
+            listMaximum' current (x:xs)
+                | current <= x = listMaximum' x xs
+                | otherwise = listMaximum' current xs
 
 
 listMinimum :: (Ord a) => [a] -> Maybe a
-listMinimum xs 
-    | minlist2 xs == null = Nothing
-    | otherwise = Just $ (minlist2 xs)
+listMinimum [] = Nothing
+listMinimum (x:xs) = Just $ listMin' x xs
+    where 
+        listMin' current [] = current
+        listMin' current (x:xs)
+            | current >= x = listMin' x xs
+            | otherwise = listMin' current xs
                
 
 -- TASK 3 Folds
@@ -115,11 +121,14 @@ safeMinimum xs = foldr (\x acc -> min' x acc) Nothing xs
 any :: Foldable t => (a -> Bool) -> t a -> Bool
 any p xs = foldr (\x acc -> if p x then True else acc ) False xs
 
-all :: Foldable t => (a -> Bool) -> t a -> Bool
-all p xs = foldr (\x acc -> ifOneFalse x) True xs
+-- predicate (>2) på listen [3,1,4]
+all :: Foldable t => (a -> Bool) -> t a -> Bool 
+all p xs = foldr (\x acc -> ifOneFalse x acc) True xs
             where
-                ifOneFalse x
+                ifOneFalse x acc
                     | p x == False = False
+                    | otherwise = acc
+           
 
 -- TASK 4
 -- Num Complex
@@ -132,12 +141,14 @@ instance Show Complex where
         | otherwise = show r ++ "-" ++ show (abs i) ++ "i" 
 
 instance Num Complex where 
-    (+) = undefined
-    (*) = undefined
-    abs = undefined 
-    signum = undefined
-    fromInteger = undefined 
-    negate = undefined 
+    (+) (Complex r1 i1) (Complex r2 i2) = Complex (r1 + r2) (i1+i2) 
+    (*) (Complex r1 i1) (Complex r2 i2) = Complex (r1*r2 - i1*i2) (i1*r2 + i2*r1) --usikker!
+    --r1r2 + r1i2 + i1r2 +i1i2 
+    abs (Complex r1 i1) = Complex (sqrt $ r1^2 + i1^2) 0 
+    signum (Complex r1 i1) = Complex (r1/l) (i1/l)
+                                where l = sqrt (r1^2 + i1^2)
+    fromInteger x = Complex (fromInteger x) 0
+    negate (Complex r2 i2) = Complex (-r2) (-i2) 
 
 -- TASK 5
 -- Making your own type classes

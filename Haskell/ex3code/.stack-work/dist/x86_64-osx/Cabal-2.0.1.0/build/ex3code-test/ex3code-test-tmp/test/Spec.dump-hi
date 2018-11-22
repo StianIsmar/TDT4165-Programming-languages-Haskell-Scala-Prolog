@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2018-11-21 12:40:22.764419 UTC
+2018-11-22 10:35:56.671083 UTC
 
 interface main:Main 8022
-  interface hash: e04aff4ad9d055e706d86a9d7bbdfbd4
-  ABI hash: 98abd350e1daa754a0b66f9dd31cba36
-  export-list hash: 32018c5d94b6b7f65873336a2b2138bd
-  orphan hash: 21db50408a8217f50a78c071099abf46
+  interface hash: ff57f63ee1348d9c2b5af796e222ecb9
+  ABI hash: 70b2b171938a281f1b6706918e755af2
+  export-list hash: 587e276b4d1d33d192443fd2ed34bb69
+  orphan hash: b28bb02bdd7883d2cf73cc922940f1b9
   flag hash: ab015cb20bc43c9ec9d908c690a8dbaa
   sig of: Nothing
   used TH splices: False
@@ -64,7 +64,7 @@ import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
 import  -/  base-4.10.1.0:GHC.Num 6e1dc5d36d99a802edb39b92bb1923b8
 import  -/  base-4.10.1.0:GHC.Show 0a8ce2b5e533d1c2cfb7954e6736be45
 import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
-import  -/  ex3code-0.1.0.0:Lib d3e504e1a72eb67b0b25821c25f2dd17
+import  -/  ex3code-0.1.0.0:Lib 9475169448a58e86c8eba0f9a8aa1cc9
 import  -/  ex3code-0.1.0.0:Tree d1cba58ceff1ba9dd2ff18298c912d4f
 import  -/  ghc-prim-0.5.1.1:GHC.Classes 93e2660065dce9329577e83d76d8f0d4
 import  -/  ghc-prim-0.5.1.1:GHC.Types b1fd0716441595db508c1a74387bf394
@@ -304,6 +304,68 @@ dd646554fde8764392bec7e56ea1803f
                    (w1 :: Main.Color)
                    (w2 :: GHC.Base.String) ->
                  Main.$w$cshowsPrec w1 w2) -}
+904c0e3b4cf02ed91313de76c03c87ee
+  $s$fEqMaybe :: GHC.Classes.Eq (GHC.Base.Maybe GHC.Types.Int)
+  {- HasNoCafRefs, Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ (GHC.Base.Maybe GHC.Types.Int)
+                  (\ (ds :: GHC.Base.Maybe GHC.Types.Int)
+                     (ds1 :: GHC.Base.Maybe GHC.Types.Int) ->
+                   case ds of wild {
+                     GHC.Base.Nothing
+                     -> case ds1 of wild1 {
+                          GHC.Base.Nothing -> GHC.Types.True
+                          GHC.Base.Just ipv -> GHC.Types.False }
+                     GHC.Base.Just a1
+                     -> case ds1 of wild1 {
+                          GHC.Base.Nothing -> GHC.Types.False
+                          GHC.Base.Just b1 -> GHC.Classes.eqInt a1 b1 } })
+                  (\ (a1 :: GHC.Base.Maybe GHC.Types.Int)
+                     (b :: GHC.Base.Maybe GHC.Types.Int) ->
+                   case a1 of wild {
+                     GHC.Base.Nothing
+                     -> case b of wild1 {
+                          GHC.Base.Nothing -> GHC.Types.False
+                          GHC.Base.Just ipv -> GHC.Types.True }
+                     GHC.Base.Just a2
+                     -> case b of wild1 {
+                          GHC.Base.Nothing -> GHC.Types.True
+                          GHC.Base.Just b1
+                          -> case GHC.Classes.eqInt a2 b1 of wild2 {
+                               GHC.Types.False -> GHC.Types.True
+                               GHC.Types.True -> GHC.Types.False } } }) -}
+734359b8a15d585521eec1d88156629c
+  $s$fShowMaybe :: GHC.Show.Show (GHC.Base.Maybe GHC.Types.Int)
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ (GHC.Base.Maybe GHC.Types.Int)
+                  (GHC.Show.$fShowMaybe_$cshowsPrec
+                     @ GHC.Types.Int
+                     GHC.Show.$fShowInt)
+                  (\ (x :: GHC.Base.Maybe GHC.Types.Int) ->
+                   case x of wild {
+                     GHC.Base.Nothing -> GHC.Show.$fShowMaybe4
+                     GHC.Base.Just b1
+                     -> GHC.Base.augment
+                          @ GHC.Types.Char
+                          (\ @ b
+                             (c :: GHC.Types.Char -> b -> b)[OneShot]
+                             (n :: b)[OneShot] ->
+                           GHC.Base.foldr @ GHC.Types.Char @ b c n GHC.Show.$fShowMaybe1)
+                          (GHC.Show.showSignedInt
+                             GHC.Show.appPrec1
+                             b1
+                             (GHC.Types.[] @ GHC.Types.Char)) })
+                  (\ (eta :: [GHC.Base.Maybe GHC.Types.Int])
+                     (eta15 :: GHC.Base.String) ->
+                   GHC.Show.showList__
+                     @ (GHC.Base.Maybe GHC.Types.Int)
+                     (GHC.Show.$fShowMaybe_$cshowsPrec
+                        @ GHC.Types.Int
+                        GHC.Show.$fShowInt
+                        GHC.Show.$fShow(,)1)
+                     eta
+                     eta15) -}
 e4fce30ca3a24733b510258bec7a1faf
   $s$fShow[] :: GHC.Show.Show [GHC.Integer.Type.Integer]
   {- Strictness: m, Inline: CONLIKE,
@@ -491,6 +553,12 @@ deb1e4eeefa1ed9b4424f9b61d064210
 instance GHC.Classes.Eq [Main.Color] = Main.$fEqColor
 instance GHC.Classes.Ord [Main.Color] = Main.$fOrdColor
 instance GHC.Show.Show [Main.Color] = Main.$fShowColor
+"SPEC/Main $fEqMaybe @ Int" [orphan] forall (v :: GHC.Classes.Eq
+                                                    GHC.Types.Int)
+  GHC.Base.$fEqMaybe @ GHC.Types.Int v = Main.$s$fEqMaybe
+"SPEC/Main $fShowMaybe @ Int" [orphan] forall (v :: GHC.Show.Show
+                                                      GHC.Types.Int)
+  GHC.Show.$fShowMaybe @ GHC.Types.Int v = Main.$s$fShowMaybe
 "SPEC/Main $fShow[] @ Integer" [orphan] forall (v :: GHC.Show.Show
                                                        GHC.Integer.Type.Integer)
   GHC.Show.$fShow[] @ GHC.Integer.Type.Integer v = Main.$s$fShow[]
