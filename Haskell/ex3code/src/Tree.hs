@@ -20,14 +20,13 @@ treeConcat (Branch left v right) = treeConcat left ++ v ++ treeConcat right
 
 treeMaximum :: (Ord a) => Tree a -> a
 treeMaximum (Leaf x) = x
-treeMaximum (Branch lefttree v righttree) = max (max (treeMaximum left) v) (treeMaximum right)
+treeMaximum (Branch lefttree v righttree) = max (max (treeMaximum lefttree) v) (treeMaximum righttree)
   
 
 -- Write a Foldable instance for Tree.
 instance Foldable Tree where
-    foldr `op` acc (Leaf x) = x `op` acc 
-    foldr `op` acc (Branch lefttree v righttree) =  foldr op (v `f` foldr op acc righttree) lefttree
+    foldr op acc (Leaf x) = x `op` acc 
+    foldr op acc (Branch lefttree v righttree) =  foldr op (v `op` foldr op acc righttree) lefttree
 -- (v `f` foldr op acc righttree) returns the accumulator! Remember that!
 
-    foldr op acc (Branch left x right) =
-        foldr op (x `op` foldr op acc right) left
+

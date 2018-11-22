@@ -198,7 +198,7 @@ data Key = Key {
                     keyNr::Int,
                     located :: Position,
                     cabinet :: Position
-                }, deriving (Show)
+                } deriving (Show)
 
 instance Eq Key where
     (==) k1 k2 = keyNr k1 == keyNr k2
@@ -207,18 +207,18 @@ instance Pos Key where
     pos k1 = located k1
 
 instance Move Key where
-move k1 newpos = k1 {located = newpos}
-belongs k1 = cabinet k1
+    move k1 newpos = k1 {located = newpos}
+    belongs k1 = cabinet k1
 
 --Check if an object is where it belongs:
 free :: Move a => a -> Bool
 free t = belongs t == pos t
 
 carAvailable :: Car -> Bool
-carAvailable c1 = free t && (free (key c1))
+carAvailable c1 = (free c1) && (free (key c1))
 
-distanceBetween :: Pos a => a -> a -> (Position or Int)
+distanceBetween :: Pos a => a -> a -> (Position)
 distanceBetween loc object = (abs $ loc1-obj1, abs $ loc1 - obj2)
                     where
                         (loc1,loc2) = pos loc
-                        (obj,obh2) = pos object
+                        (obj1,obj2) = pos object
