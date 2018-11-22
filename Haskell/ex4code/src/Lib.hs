@@ -21,7 +21,10 @@ takeWhile p (x:xs)
     | p x = x:takeWhile p xs
     | otherwise = []
 
-dropWhile = undefined
+dropWhile _ [] = []
+dropWhile p (x:xs)
+        | p x = dropWhile p xs
+        | otherwise = x:xs
 
 break :: (a -> Bool) -> [a] -> ([a], [a])
 break = undefined

@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-11-22 13:45:22.866028 UTC
+2018-11-22 13:48:52.044573 UTC
 
 interface ex4code-0.1.0.0-5bENbJqvM8pAHWpyP5ZAsL:Lib 8022
-  interface hash: 260c28750fbdc27c14a4aeccc539d2cd
-  ABI hash: f615b86552cf0423be0b37a27b24c8dc
+  interface hash: a2675b4be3de35b184e791038f1d1484
+  ABI hash: 729c9785142f3dfbae66a57a6afd1d8b
   export-list hash: f6e27f8953b807afe2e48afe1639d909
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 0451a77cc0d8e5d99d548d6441c7dd35
@@ -498,9 +498,9 @@ f93819ebac3a7b6d1f8f28087d2dee55
 1d0f502b053631f0f2cd6ff4319f9fae
   break :: (a -> GHC.Types.Bool) -> [a] -> ([a], [a])
   {- Strictness: x -}
-9bfef9d911d888e1811d86d3ea3ded5d
+56d9064cd50995b305febf1c553ee307
   dropWhile :: (a -> GHC.Types.Bool) -> [a] -> [a]
-  {- Strictness: x -}
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,C(U)><S,1*U> -}
 e0784082756f7535a0d4026afcbb4438
   interpret :: [Lib.Token] -> [Lib.Token]
   {- Strictness: x -}
