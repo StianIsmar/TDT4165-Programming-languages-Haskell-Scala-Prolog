@@ -158,12 +158,7 @@ type Position = (Double, Double)
 class Pos a where
     pos :: a -> Position
 
-data Campus = Kalvskinnet
-            | Gløshaugen
-            | Tyholt
-            | Moholt
-            | Dragvoll
-            deriving (Show, Eq)
+data Campus = Kalvskinnet| Gløshaugen| Tyholt| Moholt| Dragvoll deriving (Show, Eq)
 
 instance Pos Campus where
     pos Kalvskinnet = (63.429, 10.388)
@@ -172,4 +167,58 @@ instance Pos Campus where
     pos Moholt      = (63.413, 10.434)
     pos Dragvoll    = (63.409, 10.471)
 
---class (Pos a) => Move a where
+--Type class Move that is a subclass of Pos:
+class (Pos a) => Move a where
+    move :: a -> Position -> a
+    belongs :: a -> Position
+
+-- Type Car with record syntax:
+data Car = Car { 
+                 brand :: String , 
+                 regNr :: String,
+                 isAt :: Position,
+                 key :: Key,
+                 parking :: Position
+               } deriving (Show)
+               --Should derive Eq, Pos, and Move:
+
+instance Eq Car where
+    (==) c1 c2 = regNr c1 == regNr c2
+
+    -- Gir ut attributt_
+instance Pos Car where
+    pos c1 = isAt c1
+    -- Oppdaterer attributt:
+instance Move Car where
+    move c1 newpos = c1 {isAt = newpos}  
+    -- Gir ut attributt av typen Position:
+    belongs c1 = parking c1
+
+data Key = Key {
+                    keyNr::Int,
+                    located :: Position,
+                    cabinet :: Position
+                }, deriving (Show)
+
+instance Eq Key where
+    (==) k1 k2 = keyNr k1 == keyNr k2
+
+instance Pos Key where
+    pos k1 = located k1
+
+instance Move Key where
+move k1 newpos = k1 {located = newpos}
+belongs k1 = cabinet k1
+
+--Check if an object is where it belongs:
+free :: Move a => a -> Bool
+free t = belongs t == pos t
+
+carAvailable :: Car -> Bool
+carAvailable c1 = free t && (free (key c1))
+
+distanceBetween :: Pos a => a -> a -> (Position or Int)
+distanceBetween loc object = (abs $ loc1-obj1, abs $ loc1 - obj2)
+                    where
+                        (loc1,loc2) = pos loc
+                        (obj,obh2) = pos object
