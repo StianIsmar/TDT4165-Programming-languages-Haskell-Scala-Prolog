@@ -42,10 +42,13 @@ listConcat (xs:xss)= xs ++ listConcat xss
 
 listMaximum :: (Ord a) => [a] -> Maybe a
 listMaximum [] = Nothing
-listMaximum (x:xs) 
-        | Just x > listMaximum xs = Just x
-        | otherwise = listMaximum xs 
-
+listMaximum (x:xs) = Just $ listMaximum' x xs
+        where listMaximum' current (x:xs)
+            -- If the current one is smaller (or ==) than the
+            -- next one in the list-> set the next one as
+            -- current and call it recursively! easy
+            | current <= x = listMaximum' x xs
+            | otherwise = listMaximum' current xs
 
 
 listMinimum :: (Ord a) => [a] -> Maybe a
@@ -53,12 +56,6 @@ listMinimum xs
     | minlist2 xs == null = Nothing
     | otherwise = Just $ (minlist2 xs)
                
-
-minlist2 :: (Ord a)=> [a]->a
-minlist2 [] = null
-minlist2 (x:xs)
-        | x < minlist2 xs = x
-        | otherwise = minlist2
 
 -- TASK 3 Folds
 
