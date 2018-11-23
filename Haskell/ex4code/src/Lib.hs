@@ -77,10 +77,29 @@ handleToken ((TokInt x):acc) (TokOp Dup) = (TokInt x):(TokInt (negate x)):acc
 handleToken _ (TokErr) = [TokErr]
 
 opLeq :: Token -> Token -> Bool
-opLeq = undefined
+opLeq (TokOp op1) (TokOp op2)
+        | op1 == op2 = False
+        | op1 == Div && op2 == Mult = False
+        | op1 == Mult && op2 == Div = False
+        | op1 == Plus && op2 == Minus = False
+        | op1 == Minus && op2 == Plus = False
+        | op1 == Mult = True
+        | op1 == Div = True
+        | otherwise = False
+
+
 
 shunt :: [Token] -> [Token]
-shunt = undefined
+shunt [TokErr] = [TokErr]
+shunt input = si input [] []
+-- Hvis den fra head har høyere presedence enn den fra head på operators: Dytt den rett på output-stacken.
+-- Hvis den fra head har lavere presedence enn den fra head på operators: Dytt den fra operators rett på operator-stacken
+si :: [Token] -> [Token] -> [Token] -> [Token]
+si ((TokOp x):xs) outs []     = si xs outs ((TokOp x):[])
+si [] o [] = reverse o 
+si ((TokInt x):inputs) outputs operators = si inputs ((TokInt x):outputs) operators
+si ((TokOp x):inputs) outputs (op:operators)
+        | opLeq (TokOp x) op = si inputs outputs ((TokOp x):op:operators)
+        | not $ opLeq (TokOp x) op = si ((TokOp x):inputs) (op:outputs) operators
+si [] outs (z:zs) = si [] (z:outs) zs
 
-shuntInternal :: [Token] -> [Token] -> [Token] -> [Token]
-shuntInternal = undefined
