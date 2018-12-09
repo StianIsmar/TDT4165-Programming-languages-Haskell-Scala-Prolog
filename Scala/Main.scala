@@ -26,4 +26,15 @@ object Hello extends App {
     counter
   }
 
+  //e)
+  // Summing elements using recursion!
+
+  def recSum(myArray: Array[Int]): Int = myArray match {
+    case isEmpty => 0
+    case _ =>  myArray{0} + recSum(myArray.drop(1))
+  }
+
+
+
+
 }
