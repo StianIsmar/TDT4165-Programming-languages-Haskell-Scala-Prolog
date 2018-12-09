@@ -33,8 +33,7 @@ object Hello extends App {
     case isEmpty => 0
     case _ =>  myArray{0} + recSum(myArray.drop(1))
   }
-this.recSum([1,2,3])
-
+  println(recSum([1,2,3]))
 
 
 }

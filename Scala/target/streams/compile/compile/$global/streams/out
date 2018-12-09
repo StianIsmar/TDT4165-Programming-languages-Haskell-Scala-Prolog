@@ -1,6 +1,6 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:36:13: illegal start of simple expression[0m
-[0m[[0m[31merror[0m] [0m[0mthis.recSum([1,2,3])[0m
-[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:36:16: illegal start of simple expression[0m
+[0m[[0m[31merror[0m] [0m[0m  Hello.recSum([1,2,3])[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
 [0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:40:1: ')' expected but '}' found.[0m
 [0m[[0m[31merror[0m] [0m[0m}[0m
 [0m[[0m[31merror[0m] [0m[0m^[0m
