@@ -1,7 +1,16 @@
-[0m[[0m[33mwarn[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:34:12: patterns after a variable pattern cannot match (SLS 8.1.1)[0m
-[0m[[0m[33mwarn[0m] [0m[0m      case isEmpty => 0[0m
-[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:35:24: unreachable code due to variable pattern 'isEmpty' on line 34[0m
-[0m[[0m[33mwarn[0m] [0m[0m      case _ => x.head + recSum(x.tail)[0m
-[0m[[0m[33mwarn[0m] [0m[0m                       ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:52:6: not found: value n[0m
+[0m[[0m[31merror[0m] [0m[0m if (n == 0 || n == 1 ){[0m
+[0m[[0m[31merror[0m] [0m[0m     ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:52:16: not found: value n[0m
+[0m[[0m[31merror[0m] [0m[0m if (n == 0 || n == 1 ){[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:53:4: not found: value n[0m
+[0m[[0m[31merror[0m] [0m[0m   n[0m
+[0m[[0m[31merror[0m] [0m[0m   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:56:8: not found: value n[0m
+[0m[[0m[31merror[0m] [0m[0m   fib(n-1) + fib (n-2)[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:56:20: not found: value n[0m
+[0m[[0m[31merror[0m] [0m[0m   fib(n-1) + fib (n-2)[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m5 errors found[0m

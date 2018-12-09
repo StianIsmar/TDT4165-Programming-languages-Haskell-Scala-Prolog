@@ -1,3 +1,4 @@
+import Array._
 object Hello extends App {
 
 
@@ -29,12 +30,6 @@ object Hello extends App {
   //e)
   // Summing elements using recursion!
 
-  def recSum(myArray: Array[Int]): Int = {
-    myArray match {
-      case myArray.isEmpty => 0
-      case _ => x.head + recSum(x.tail)
-    }
-  }
 
   def sum_recursive(input: Array[Int]): Int = {
     if (input.isEmpty) {
@@ -46,9 +41,24 @@ object Hello extends App {
     }
   }
 
-    var xs: Array[Int] = Array(1, 2, 3, 4, 5)
-      println(recSum(xs) + " DETTE ER RECSUM!!")
+    var xss: Array[Int] = Array(1, 2, 3, 4, 5)
+  println(sum_recursive(xss) + " DETTE ER RECSUM!!")
 
+
+// f) Fibonacci:
+  // BigInt vs Int
+
+  def fib(n: BigInt): BigInt = {
+ if (n == 0 || n == 1 ){
+   n
+ }
+    else{
+   fib(n-1) + fib(n-2)
+ }
+  }
+
+  println(fib(1))
+  println(fib(3))
 
 
 }
