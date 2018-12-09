@@ -29,11 +29,26 @@ object Hello extends App {
   //e)
   // Summing elements using recursion!
 
-  def recSum(myArray: Array[Int]): Int = myArray match {
-    case isEmpty => 0
-    case _ =>  myArray{0} + recSum(myArray.drop(1))
+  def recSum(myArray: Array[Int]): Int = {
+    myArray match {
+      case myArray.isEmpty => 0
+      case _ => x.head + recSum(x.tail)
+    }
   }
-  println(recSum([1,2,3]))
+
+  def sum_recursive(input: Array[Int]): Int = {
+    if (input.isEmpty) {
+      0
+    } else {
+      input {
+        0
+      } + sum_recursive(input.drop(1))
+    }
+  }
+
+    var xs: Array[Int] = Array(1, 2, 3, 4, 5)
+      println(recSum(xs) + " DETTE ER RECSUM!!")
+
 
 
 }
