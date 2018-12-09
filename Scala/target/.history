@@ -1,0 +1,5 @@
+Main.sumElements([1,2,4])
+:load Main.scala
+sumElements([1,3,4,5])
+:load Main.sca
+:q

@@ -1,0 +1,7 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:28:23: illegal start of simple expression[0m
+[0m[[0m[31merror[0m] [0m[0m  println(sumElements([1,2,4,5]))[0m
+[0m[[0m[31merror[0m] [0m[0m                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala:30:1: ')' expected but '}' found.[0m
+[0m[[0m[31merror[0m] [0m[0m}[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
