@@ -1,1 +1,0 @@
-scalac -classpath /Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/target/scala-2.12/classes -bootclasspath /Users/stianismar/.sbt/boot/scala-2.12.7/lib/scala-library.jar /Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/Main.scala

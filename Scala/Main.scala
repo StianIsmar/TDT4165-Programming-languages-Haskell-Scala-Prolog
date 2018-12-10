@@ -95,8 +95,19 @@ object Hello extends App {
 
     /** Task 3: Concurrency in Scala **/
     //3a)
-    //
+    // Create a function that takes as argument a function and returns a Thread  initialized
+    // with the input function
+    //Make sure that the returned thread is not started!
 
+    def createThread(f: () => Unit): Thread = {
+      // This creates a thread by overriding a class method with another implementation. The thread is not yet started.
+      new Thread {
+        override def run {
+          f()
+        }
+      }
+    }
+  //evt:
 
 
 }
