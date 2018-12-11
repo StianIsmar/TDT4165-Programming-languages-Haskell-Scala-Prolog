@@ -134,6 +134,16 @@ object Hello extends App {
     counter += 1
     counter
   }
+
+
+  //Med atomic integer:
+  private val counter: AtomicInteger = new AtomicInteger
+  def increaseCounter: Integer = {
+    counter.incrementAndGet
+  }
+
+
+
 // 3f) DEADLOCK, EXPLAIN AND EXAMPLE
   // A deadlock is a situation we get if two OR MORE threads are waiting for each other to complete an
   // action before proceeding with their own action.
