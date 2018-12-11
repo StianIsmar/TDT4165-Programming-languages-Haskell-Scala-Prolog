@@ -6,40 +6,40 @@ import cats.effect.IO
 
 trait AdServer extends Server with Database[Ad] {
 
-  def printConsoleIO(s: String): IO[Unit]       = IO(printConsole(s))
-  def readStringIO(message: String): IO[String] = IO(readLine(message))
+  private def addAd(): Unit ={
+    val adData: String = readLine("Enter ad data: ")
+    val parsedAd: Either[Aderror, Ad] = Ad.fromString(adData)
 
-  private def addAd(): IO[Unit] =
-    for {
-      adData <- readStringIO("Enter ad data: ")
-      output <- Ad
-                 .fromString(adData)
-                 .fold(err => printConsoleIO(err.message), ad => {
-                   val insertedId: AdId = insertInDatabase(ad)
-                   printConsoleIO(s"Inserted ad with id: $insertedId")
-                 })
-    } yield output
+    parsedAd match {
+      case Left(err) => printConsole(err.message)
+      case Right(ad) =>
+        val insertedId: AdId = insertInDatabase(ad)
+        printConsole(s"Inserted ad with id: $insertedId")
+    }
+  }
 
-  private def readAd(): IO[Unit] =
+  private def readAd(): Unit ={
+    val adId: AdId = AdId(readLine("Enter adId: ").toLong)
+    printConsole(getFromDatabase(adId).get.toConsoleString)
+  }
+
     for {
       adId   <- readStringIO("Enter adId: ").map(s => AdId(s.toLong))
       output <- printConsoleIO(getFromDatabase(adId).get.toConsoleString)
     } yield output
 
-  def loop(): IO[Unit] =
-    for {
-      mode <- readStringIO("Select mode: quit, add, read: ").map(Mode.fromString)
-      _ <- mode match {
-            case AddMode     => addAd()
-            case ReadMode    => readAd()
-            case UnknownMode => printConsoleIO("unknown mode")
-            case QuitMode    => printConsoleIO("Goodbye")
-          }
-      runAgain <- if (mode != QuitMode) loop() else IO.unit
-    } yield runAgain
 
-  def run(): Unit = loop().unsafeRunSync()
+  def run(): Unit = {
+    val mode = Mode.fromString(readLine("Select mode: quit, add, read: "))
 
+    mode match {
+      case AddMode     => addAd()
+      case ReadMode    => readAd()
+      case UnknownMode => printConsole("unknown mode")
+      case QuitMode    => printConsole("Goodbye")
+    }
+    if (mode != QuitMode) run() else ()
+  }
 }
 
 object MainSolution extends AdServer with RealConsole {

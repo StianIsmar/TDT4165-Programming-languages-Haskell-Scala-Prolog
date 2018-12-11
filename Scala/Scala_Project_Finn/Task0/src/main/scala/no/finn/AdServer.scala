@@ -1,8 +1,9 @@
-package no.finn
+package no.solution
 
 import no.finn.common._
 
 trait AdServer extends Server with Database[String] {
+
   private def addAd(): Unit = {
     val adData: String   = readLine("Enter ad data: ")
     val insertedId: AdId = insertInDatabase(adData)
@@ -15,25 +16,22 @@ trait AdServer extends Server with Database[String] {
   }
 
   def run(): Unit = {
-    var mode: String = ""
+    var mode: Mode = UnknownMode
 
-    while (mode != "quit") {
-      mode = readLine("Select mode: quit, add, read: ")
+    while (mode != QuitMode) {
+      mode = Mode.fromString(readLine("Select mode: quit, add, read: "))
 
-      if (mode == "add") {
-        addAd()
-      } else if (mode == "read") {
-        readAd()
-      } else if (mode == "quit") {
-        printConsole("Goodbye")
-      } else {
-        printConsole("unknown mode")
+      mode match {
+        case AddMode     => addAd()
+        case ReadMode    => readAd()
+        case UnknownMode => printConsole("unknown mode")
+        case QuitMode    => printConsole("Goodbye")
       }
     }
   }
 }
 
-object Main extends AdServer with RealConsole {
+object MainSolution extends AdServer with RealConsole {
   def main(args: Array[String]): Unit =
     run()
 }

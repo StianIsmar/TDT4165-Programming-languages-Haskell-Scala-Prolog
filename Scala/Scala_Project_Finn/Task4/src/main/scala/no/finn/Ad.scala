@@ -15,15 +15,16 @@ object Ad {
   private def splitString(s: String): List[String] = s.split(' ').toList
 
   private implicit class SafeStringToLong(private val s: String) {
-    def toLongOption: Option[Long] = scala.util.Try(s.toLong).toOption
+    def toLongEither: Either[LongParseError, Long] =
+      scala.util.Try(s.toLong).toEither.left.map(t=>LongParseError(t.getMessage))
   }
 
-  def fromString(s: String): Option[Ad] =
+  def fromString(s: String): Either[AdError, Ad] =
     splitString(s) match {
       case prod :: regNr :: price :: Nil if prod == "car" =>
-        price.toLongOption.map(long => CarAd(regNr, long))
+        price.toLongEither.map(long => CarAd(regNr, long))
       case prod :: company :: salary :: Nil if prod == "job" =>
-        salary.toLongOption.map(long => JobAd(company, long))
-      case _ => None
+        salary.toLongEither.map(long => JobAd(company, long))
+      case _ => Left(ArguementsError(s"s is not a legal input"))
     }
 }
