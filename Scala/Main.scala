@@ -107,7 +107,73 @@ object Hello extends App {
         }
       }
     }
-  //evt:
+
+    //3b)
+  // Rec func that creates n lambdas
+  def createFibLambda(n: BigInt): Array[() => Unit] = n match{
+    case n if n <= 0 => Array(() => println(fib1(0)))
+    case _ => createFibLambda(n-1) ++ Array(() => println(fib1(n)))
+  }
+  val threads = createFibLambda(34).map(x => createThread(x))
+  println(threads + " Dette er threads ")
+   //3c)
+  // Map the function in 3a to each lambda in 3c for a value.
+
+  //3d)
+  // Map each thread from c) to start:
+  threads.map(x => x.start
+  threads.map(x => x.join // Makes sure that each thread is executed!
+  // The main thread is set on wait.
+
+  //3e)
+  // Make code snippet thread safe:
+  private var counter: Int = 0
+
+  def increaseCounter(): Int = this.synchronized{ // this.synchornized blocks
+    // the other ones
+    counter += 1
+    counter
+  }
+// 3f) DEADLOCK, EXPLAIN AND EXAMPLE
+  // A deadlock is a situation we get if two OR MORE threads are waiting for each other to complete an
+  // action before proceeding with their own action.
+  //They are waiting because each thread has reveived an exclusive access to a resource
+  // which the other one needs.
+
+  // In concurrent programming, when two threads obtain two separate monitors
+  // at the same time and then attempt to get the others monitor, we get a deadlock.
+
+  // Conditions to get a deadlock: Mutual exclusion, Hold and wait, No preemption, Circular wait
+  // Example with lazy val:
+
+  object A {
+    lazy val base = 42
+    lazy val start = B.step   // (1) A tries to access B
+  }
+
+  object B {
+    lazy val step = A.base    // (2) B tries to access a lazy val in A
+  }
+
+  object DeadlockScenario {
+    def run = {
+      val result = Future.sequence(Seq(
+        Future { A.start },                        // (1)
+        Future { B.step }                          // (2)
+      ))
+      Await.result(result, 1.minute)
+    }
+  }
 
 
+  // Example from book:
+  /*
+  val a = new Account("Stian", 1000)
+  val b = new Account("Sara", 2000)
+  val t1 = thread { for (i<- 0 until 100) send(a, b, 1) }
+  val t2 = thread { for (i<- 0 until 100) send(b, a, 1) }
+  t1.join(); t2.join()
+  log(s"a = ${a.money}, b = ${b.money}")
+}
+*/
 }
