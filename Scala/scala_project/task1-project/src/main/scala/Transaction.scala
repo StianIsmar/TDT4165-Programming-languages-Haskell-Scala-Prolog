@@ -7,20 +7,39 @@ object TransactionStatus extends Enumeration {
 
 class TransactionQueue {
 
+  //New queue
+  private val localQueue: Queue[Transaction] = new Queue
+
     // Remove and return the first element from the queue
-    def pop: Transaction = ???
+
+    def pop: Transaction = localQueue.synchronize{
+      localQueue.dequeue() //Returns the top element in the queue!
+    }
 
     // Return whether the queue is empty
-    def isEmpty: Boolean = ???
+    def isEmpty: Boolean = localQueue.synchronized{
+      localQueue.isEmpty
+    }
 
     // Add new element to the back of the queue
-    def push(t: Transaction): Unit = ???
+    def push(t: Transaction): Unit = localQueue.synchronized {
+      localQueue.enqueue(t)
+    }
 
     // Return the first element from the queue without removing it
-    def peek: Transaction = ???
+    def peek: Transaction = {
+      localQueue.synchronized {
+        localQueue {0}
+      }
+    }
 
     // Return an iterator to allow you to iterate over the queue
-    def iterator: Iterator[Transaction] = ???
+    def iterator: Iterator[Transaction] = {
+      localQueue.synchronized{
+        localQueue.iterator
+
+      }
+    }
 }
 
 class Transaction(val transactionsQueue: TransactionQueue,
@@ -50,6 +69,6 @@ class Transaction(val transactionsQueue: TransactionQueue,
       }
 
       // Extend this method to satisfy requirements.
-
+      
     }
 }

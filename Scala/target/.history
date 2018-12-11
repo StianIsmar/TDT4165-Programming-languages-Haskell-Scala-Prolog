@@ -3,3 +3,4 @@ Main.sumElements([1,2,4])
 sumElements([1,3,4,5])
 :load Main.sca
 :q
+run

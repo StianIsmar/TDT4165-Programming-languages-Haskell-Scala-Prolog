@@ -138,6 +138,7 @@ object Hello extends App {
 
   //Med atomic integer:
   private val counter: AtomicInteger = new AtomicInteger
+
   def increaseCounter: Integer = {
     counter.incrementAndGet
   }

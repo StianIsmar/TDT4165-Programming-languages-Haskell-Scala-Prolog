@@ -1,0 +1,16 @@
+run
+compile
+run
+compile
+run
+complile
+run
+compile
+run
+clear
+clearn
+clean
+compile
+libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.5.19"
+compile
+run

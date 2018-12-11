@@ -13,7 +13,7 @@ class Account(val bank: Bank, initialBalance: Double) {
 
     def withdraw(amount: Double): Unit = balance.synchronized {
         amount match {
-            case amount if balance.amount - amount <0 => throw new NoSufficientFundsException()
+            case amount if (balance.amount - amount <0) => throw new NoSufficientFundsException()
             case amount if amount <= 0 => throw new IllegalAmountException()
             case _ => balance= balance - amount
         }

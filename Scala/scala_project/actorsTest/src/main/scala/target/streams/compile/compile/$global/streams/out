@@ -1,0 +1,27 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/scala_project/actorsTest/src/main/scala/ActorsTest.scala:1:8: not found: object akka[0m
+[0m[[0m[31merror[0m] [0m[0mimport akka.pattern._[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/scala_project/actorsTest/src/main/scala/ActorsTest.scala:3:21: not found: type Actor[0m
+[0m[[0m[31merror[0m] [0m[0mclass Pongy extends Actor {[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/scala_project/actorsTest/src/main/scala/ActorsTest.scala:4:13: not found: value Logging[0m
+[0m[[0m[31merror[0m] [0m[0m  val log = Logging(context.system, this)[0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/scala_project/actorsTest/src/main/scala/ActorsTest.scala:4:21: not found: value context[0m
+[0m[[0m[31merror[0m] [0m[0m  val log = Logging(context.system, this)[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/scala_project/actorsTest/src/main/scala/ActorsTest.scala:5:17: missing parameter type for expanded function[0m
+[0m[[0m[31merror[0m] [0m[0mThe argument types of an anonymous function must be fully known. (SLS 8.5)[0m
+[0m[[0m[31merror[0m] [0m[0mExpected type was: ?[0m
+[0m[[0m[31merror[0m] [0m[0m  def receive = {[0m
+[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/scala_project/actorsTest/src/main/scala/ActorsTest.scala:8:7: not found: value sender[0m
+[0m[[0m[31merror[0m] [0m[0m      sender ! "pong"[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/scala_project/actorsTest/src/main/scala/ActorsTest.scala:9:7: not found: value context[0m
+[0m[[0m[31merror[0m] [0m[0m      context.stop(self)[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/stianismar/Dropbox/gitProjects/TDT4165-Programming-languages-Haskell-Scala-Prolog/Scala/scala_project/actorsTest/src/main/scala/ActorsTest.scala:9:20: not found: value self[0m
+[0m[[0m[31merror[0m] [0m[0m      context.stop(self)[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m8 errors found[0m
