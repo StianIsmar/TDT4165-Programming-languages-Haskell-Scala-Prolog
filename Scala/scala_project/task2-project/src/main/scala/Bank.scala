@@ -15,14 +15,20 @@ class Bank(val bankId: String) extends Actor {
 
     val accountCounter = new AtomicInteger(1000)
 
+    /** This one returns an ActorRef BRA  **/
     def createAccount(initialBalance: Double): ActorRef = {
-        // Should create a new Account Actor and return its actor reference. Accounts should be assigned with unique ids (increment with 1).
-        ???
+        // Should create a new Account Actor and return its actor reference.
+        // Accounts should be assigned with unique ids (increment with 1).
+        var accId: Int = accountCounter.incrementAndGet
+        var accRef: ActorRef = BankManager.createAccount(accId.toString, bankId, initialBalance)
+        accRef
     }
 
+     /** TRICKY: This one returns an Option[ActorRef]   **/
     def findAccount(accountId: String): Option[ActorRef] = {
         // Use BankManager to look up an account with ID accountId
-        ???
+        var foundRef: ActorRef = BankManager.findAccount(bankId, accountId)
+        /** Usikker- Må ha med noe pattern matching og case _ => None?  **/
     }
 
     def findOtherBank(bankId: String): Option[ActorRef] = {
@@ -31,8 +37,8 @@ class Bank(val bankId: String) extends Actor {
     }
 
     override def receive = {
-        case CreateAccountRequest(initialBalance) => ??? // Create a new account
-        case GetAccountRequest(id) => ??? // Return account
+        case CreateAccountRequest(initialBalance) => sender ! createAccount(initialBalance) // Create a new account
+        case GetAccountRequest(id) => sender ! findAccount(id) // Return account
         case IdentifyActor => sender ! this
         case t: Transaction => processTransaction(t)
 

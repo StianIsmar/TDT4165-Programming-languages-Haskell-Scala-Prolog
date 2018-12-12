@@ -108,7 +108,14 @@ class Account(val accountId: String, val bankId: String, val initialBalance: Dou
         case BalanceRequest => sender ! balance.amount
         case t: Transaction => {
             // Handle incoming transaction
-            ???
+            try{
+                this.deposit(t.amount)
+                t.status = TransactionStatus.SUCCESS
+
+            }catch {
+                case _:IllegaAmountException => t.status = TransactionStatus.FAILED
+            }
+            sender ! new TransactionRequestReceipt(t.from, t.id, t)
         }
 
         case msg => ???
