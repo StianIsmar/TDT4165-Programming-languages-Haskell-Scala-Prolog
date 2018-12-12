@@ -28,12 +28,13 @@ class Bank(val bankId: String) extends Actor {
     def findAccount(accountId: String): Option[ActorRef] = {
         // Use BankManager to look up an account with ID accountId
         var foundRef: ActorRef = BankManager.findAccount(bankId, accountId)
-        /** Usikker- Må ha med noe pattern matching og case _ => None?  **/
-    }
+        Some(foundRef)
+            }
 
     def findOtherBank(bankId: String): Option[ActorRef] = {
         // Use BankManager to look up a different bank with ID bankId
-        ???
+        var foundBankRef: ActorRef = BankManager.findBank(bankId)
+        Some(foundBankRef)
     }
 
     override def receive = {
