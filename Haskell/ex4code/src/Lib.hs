@@ -103,3 +103,10 @@ si ((TokOp x):inputs) outputs (op:operators)
         | not $ opLeq (TokOp x) op = si ((TokOp x):inputs) (op:outputs) operators
 si [] outs (z:zs) = si [] (z:outs) zs
 
+length' :: [a] -> Maybe a
+length' [] = Nothing
+        length' (xs) = Just $ len xs
+        where
+                len [] = 0
+                len (x:xs) = 1 + len xs
+

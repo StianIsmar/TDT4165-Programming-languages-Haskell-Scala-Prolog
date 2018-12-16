@@ -82,7 +82,7 @@ object Hello extends App {
 
   //2b)
   //Same function as above, but with val instead of lazy val:
-  // The val is no evaluated straight away
+  // The val is now evaluated straight away
   def myFunc2(f: () => BigInt, b: Boolean) = {
     val t = f()
     if (b) println(t)}
@@ -121,8 +121,8 @@ object Hello extends App {
 
   //3d)
   // Map each thread from c) to start:
-  threads.map(x => x.start
-  threads.map(x => x.join // Makes sure that each thread is executed!
+  threads.map(x => x.start)
+  threads.map(x => x.join) // Makes sure that each thread is executed!
   // The main thread is set on wait.
 
   //3e)
